@@ -39,7 +39,7 @@ runs:
         GMAIL_CLIENT_SECRET: ${{ env.GMAIL_CLIENT_SECRET }}
         GMAIL_REFRESH_TOKEN: ${{ env.GMAIL_REFRESH_TOKEN }}
         GMAIL_USER: ${{ env.GMAIL_USER }}
-        FROM_EMAIL: ${{ inputs.from_email || secrets.GMAIL_USER }}
-        TO_EMAIL: ${{ inputs.to_email || secrets.GMAIL_USER }}
+        FROM_EMAIL: ${{ inputs.from_email || env.GMAIL_USER }}
+        TO_EMAIL: ${{ inputs.to_email || env.GMAIL_USER }}
         SUBJECT: ${{ inputs.subject }}
         TEXT: ${{ inputs.text }}
