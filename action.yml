@@ -1,0 +1,21 @@
+name: 'Send Email via Gmail OAuth2'
+description: 'A GitHub Action to send an email using Gmail OAuth2'
+author: 'David Smith'
+
+inputs:
+  from_email:
+    description: 'The email address from which the email will be sent (optional, defaults to user email)'
+    required: false
+  to_email:
+    description: 'The email address to which the email will be sent (optional, defaults to user email)'
+    required: true
+  subject:
+    description: 'The subject of the email'
+    required: true
+  text:
+    description: 'The body of the email'
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'send_email.js'
