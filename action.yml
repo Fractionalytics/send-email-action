@@ -29,10 +29,11 @@ runs:
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./
       shell: bash
 
     - name: Run email script
-      run: node ./scripts/send-email.js
+      run: node ./send-email.js
       shell: bash
       env:
         GMAIL_CLIENT_ID: ${{ env.GMAIL_CLIENT_ID }}
