@@ -1,6 +1,6 @@
 name: 'Send Email via Gmail OAuth2'
 description: 'A GitHub Action to send an email using Nodemailer and Gmail OAuth2'
-author: 'Your Name'
+author: 'David Smith'
 
 inputs:
   from_email:
@@ -17,7 +17,6 @@ inputs:
     required: true
 
 runs:
-  using: 'node16'
   steps:
     - name: Checkout repository
       uses: actions/checkout@v2
