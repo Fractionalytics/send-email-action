@@ -19,8 +19,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout repository
+    - name: Checkout send-email-action repository
       uses: actions/checkout@v2
+      with:
+        repository: fractionalytics/send-email-action
+        path: send-email-action # Check it out in a subdirectory
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -30,9 +33,10 @@ runs:
     - name: Install dependencies
       run: npm install
       shell: bash
+      working-directory: ./send-email-action
 
     - name: Run email script
-      run: node ./send-email.js
+      run: node ./send-email-action/send-email.js
       shell: bash
       env:
         GMAIL_CLIENT_ID: ${{ env.GMAIL_CLIENT_ID }}
