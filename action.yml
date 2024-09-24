@@ -18,4 +18,4 @@ inputs:
 
 runs:
   using: 'node16'
-  main: 'send_email.js'
+  main: 'send-email.js'
