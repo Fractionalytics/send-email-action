@@ -1,21 +1,43 @@
 name: 'Send Email via Gmail OAuth2'
-description: 'A GitHub Action to send an email using Gmail OAuth2'
-author: 'David Smith'
+description: 'A GitHub Action to send an email using Nodemailer and Gmail OAuth2'
+author: 'Your Name'
 
 inputs:
   from_email:
-    description: 'Email address from which the email will be sent (optional, defaults to user email)'
+    description: 'The email address from which the email will be sent (optional, defaults to user email)'
     required: false
   to_email:
-    description: 'Email address to which the email will be sent (optional, defaults to user email)'
+    description: 'The email address to which the email will be sent'
     required: true
   subject:
-    description: 'Subject of the email'
+    description: 'The subject of the email'
     required: true
   text:
-    description: 'Body of the email'
+    description: 'The body of the email'
     required: true
 
 runs:
   using: 'node16'
-  main: 'scripts/send-email.js'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run email script
+      run: node ./scripts/send-email.js
+      env:
+        GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+        GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+        GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+        GMAIL_USER: ${{ secrets.GMAIL_USER }}
+        FROM_EMAIL: ${{ inputs.from_email || secrets.GMAIL_USER }}
+        TO_EMAIL: ${{ inputs.to_email || secrets.GMAIL_USER }}
+        SUBJECT: ${{ inputs.subject }}
+        TEXT: ${{ inputs.text }}

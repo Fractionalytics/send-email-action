@@ -1,0 +1,16 @@
+{
+    "name": "send-email-action",
+    "version": "1.0.0",
+    "description": "A GitHub Action to send an email using Nodemailer and Gmail OAuth2",
+    "main": "send_email.js",
+    "dependencies": {
+      "nodemailer": "^6.7.2",
+      "googleapis": "^102.0.0"
+    },
+    "scripts": {
+      "start": "node send-email.js"
+    },
+    "author": "David Smith",
+    "license": "MIT"
+  }
+  
