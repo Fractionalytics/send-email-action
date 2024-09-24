@@ -29,9 +29,11 @@ runs:
 
     - name: Install dependencies
       run: npm install
+      shell: bash
 
     - name: Run email script
       run: node ./scripts/send-email.js
+      shell: bash
       env:
         GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
         GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
