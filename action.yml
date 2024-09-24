@@ -4,16 +4,16 @@ author: 'Your Name'
 
 inputs:
   from_email:
-    description: 'The email address from which the email will be sent (optional, defaults to user email)'
+    description: 'Email address from which the email will be sent (optional, defaults to user email)'
     required: false
   to_email:
-    description: 'The email address to which the email will be sent'
+    description: 'Email address to which the email will be sent (optional, defaults to user email)'
     required: true
   subject:
-    description: 'The subject of the email'
+    description: 'Subject of the email'
     required: true
   text:
-    description: 'The body of the email'
+    description: 'Body of the email'
     required: true
 
 runs:
