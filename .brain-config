@@ -1,0 +1,10 @@
+type: coding
+sensitivity: low
+domain:
+  - github-action
+  - email
+  - gmail
+  - oauth2
+  - nodemailer
+brains:
+  - david-brain

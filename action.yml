@@ -4,11 +4,11 @@ author: 'David Smith'
 
 inputs:
   from_email:
-    description: 'Email address from which the email will be sent (optional, defaults to user email)'
+    description: 'Email address from which the email will be sent (optional, defaults to GMAIL_USER)'
     required: false
   to_email:
-    description: 'Email address to which the email will be sent (optional, defaults to user email)'
-    required: true
+    description: 'Email address to which the email will be sent (optional, defaults to GMAIL_USER)'
+    required: false
   subject:
     description: 'Subject of the email'
     required: true
@@ -19,25 +19,20 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout send-email-action repository
-      uses: actions/checkout@v2
-      with:
-        repository: fractionalytics/send-email-action
-        path: send-email-action # Check it out in a subdirectory
-
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '24'
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
       shell: bash
-      working-directory: ./send-email-action
+      working-directory: ${{ github.action_path }}
 
     - name: Run email script
-      run: node ./send-email-action/send-email.js
+      run: node send-email.js
       shell: bash
+      working-directory: ${{ github.action_path }}
       env:
         GMAIL_CLIENT_ID: ${{ env.GMAIL_CLIENT_ID }}
         GMAIL_CLIENT_SECRET: ${{ env.GMAIL_CLIENT_SECRET }}
