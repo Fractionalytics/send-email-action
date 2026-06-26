@@ -10,6 +10,12 @@ A **public, composite GitHub Action** (consumed by third parties via `uses: frac
 - `send-email.js` — the script that builds the message and sends it.
 - `send-email.test.js` — unit tests (Node's built-in `node:test`).
 
+Two knowledge files support work here: `CONCEPTS.md` (shared domain vocabulary —
+Consumer, Send credentials, Pin-bypass), relevant when orienting or discussing domain
+concepts; and `docs/solutions/` (documented solutions to past problems, organized by
+category with YAML frontmatter like `module`, `tags`, `problem_type`), relevant when
+implementing or debugging in documented areas.
+
 ## Commands
 
 ```bash

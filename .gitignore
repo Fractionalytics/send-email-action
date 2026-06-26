@@ -1,2 +1,6 @@
 node_modules/
 npm-debug.log*
+
+# Local session scaffolding (not for the public repo)
+DIARY.csv
+NEXT_SESSION.md
